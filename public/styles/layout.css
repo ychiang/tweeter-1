@@ -30,5 +30,5 @@ main.container {
   height: fit-content;
   margin: auto;
   background: white; 
-  padding: 80px; 
+  padding: 140px 20px 20px;
 }
