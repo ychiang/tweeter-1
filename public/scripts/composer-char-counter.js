@@ -1,26 +1,19 @@
-document.addEventListener('DOMContentLoaded', function(event) {
+$(function() {
+  const tweetMaxLength = 140;
+  $('#textarea').on('input', function() {
+    var textLength = $(this).val().length;
+    var length = tweetMaxLength - textLength;
+    var counter = $(this).parent().find('.counter');
+    var errorClass = 'error';
+    if (length < 0) {
+      counter.addClass(errorClass);
+    } else {
+      counter.removeClass(errorClass);
+    }
+    counter.text(length);
+  });
 
-$('#textarea').on('keyup', function() {
-  var textLength = $(this).val().length;
-  var length = 140 - textLength;
-  $('.counter').text(length);
+
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}); 

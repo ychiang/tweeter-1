@@ -10,11 +10,6 @@ display: block;
   border-bottom: 1px solid black;
   padding-top: 10px;
 }
-/* 
-.new-tweet #tweets {
-  display: block;
-  margin-top: 0em;
-} */
 
 .new-tweet textarea#textarea {
   width: 100%;
@@ -29,4 +24,8 @@ display: block;
 .counter {
   float: right;
   margin: 8px;
+}
+
+.error {
+  color: red;
 }
