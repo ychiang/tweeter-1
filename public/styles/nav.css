@@ -31,4 +31,5 @@
 
 #nav-bar .compose:hover {
   font-weight: bold;
+  animation: fadeIn 1s;
 }
