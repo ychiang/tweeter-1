@@ -20,4 +20,15 @@
   float: left;
 }
 
+#nav-bar .compose {
+  float: right;
+  margin: 15px;
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
 
+#nav-bar .compose:hover {
+  font-weight: bold;
+}

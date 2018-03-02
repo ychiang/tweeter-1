@@ -54,10 +54,12 @@ $(() => {
   ];
 
   function renderTweets(tweets) {
-    tweets.forEach(function(tweet) {
-      var $tweet = createTweetElement(tweet);
-      $('.single-tweet').append($tweet);
-  });
+    $('#tweets-container').empty();
+    $('#textarea').val('');
+    for (let tweet of tweets) {
+      let newTweet = createTweetElement(tweet);
+      $('.single-tweet').prepend(newTweet);
+    };
   }
   function createTweetElement(tweetObj) {
     var username = tweetObj.user.name;
@@ -89,6 +91,35 @@ $(() => {
   return $article;
   };
 
-  renderTweets(data);
+  $('.compose').click(function () {
+    $('section.new-tweet').slideToggle('slow', function () {
+      $('#textarea').focus();
+    });
+  });
 
+  const loadTweet = function () {
+    $.get('/tweets').done((tweet) => {
+    renderTweets(tweet);
+    });
+  }
+  
+  $('#tweets').submit(function(event) {
+    event.preventDefault();
+    var formVal = $('#textarea').val();
+    let maxLength = 140;
+    var preventNaughtyUser = formVal.trim();
+    if (preventNaughtyUser.length === 0) { 
+      alert('No Content');
+    } else if (preventNaughtyUser.length > maxLength) {
+        alert('Message Too Long');
+      } else {
+          var newTweet = {text: formVal};
+          $.post('/tweets', newTweet).done((newTweet)=>{
+          loadTweet();  
+          });
+        }
   })
+
+loadTweet();
+
+})
