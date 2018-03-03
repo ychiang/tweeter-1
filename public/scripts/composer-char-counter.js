@@ -12,8 +12,6 @@ $(function() {
     }
     counter.text(length);
   });
-
-
 });
 
 

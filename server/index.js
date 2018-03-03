@@ -16,16 +16,15 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
-    console.error(`Failed to connect: ${MONGODB_URI}`);
     throw err;
   }
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-  console.log('connected');
+  
   // Mount the tweets routes at the "/tweets" path prefix:
   app.use("/tweets", tweetsRoutes);
-
 });
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
